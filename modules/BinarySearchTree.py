@@ -100,6 +100,16 @@ class BinarySearchTree:
 
         return 1 + left + right
 
+    def min_value(self, node):
+
+        if node is None:
+            return None
+
+        if node.left is None:
+            return node.value
+
+        return self.min_value(node.left)
+
 
 def run_test():
     bst = BinarySearchTree()
@@ -124,3 +134,7 @@ def run_test():
     print(bst.count_nodes(bst.root))
     print(bst2.count_nodes(bst2.root))
     print(bst3.count_nodes(bst3.root))
+
+    print(bst.min_value(bst.root))
+    print(bst2.min_value(bst2.root))
+    print(bst3.min_value(bst3.root))
