@@ -90,6 +90,16 @@ class BinarySearchTree:
 
         return 1 + max(left, right)
 
+    def count_nodes(self, node) -> int:
+
+        if node is None:
+            return 0
+
+        left = self.count_nodes(node.left)
+        right = self.count_nodes(node.right)
+
+        return 1 + left + right
+
 
 def run_test():
     bst = BinarySearchTree()
@@ -110,3 +120,7 @@ def run_test():
 
     bst3 = BinarySearchTree()
     print(bst3.height(bst3.root))
+
+    print(bst.count_nodes(bst.root))
+    print(bst2.count_nodes(bst2.root))
+    print(bst3.count_nodes(bst3.root))
