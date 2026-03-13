@@ -1,4 +1,4 @@
-import Stack
+import modules.Stack as Stack
 
 def menu():
     print("Estruturas de dados — pilha, fila, árvore, grafo")
