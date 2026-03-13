@@ -1,8 +1,8 @@
 class Node:
     def __init__(self, value):
         self.value = value
-        self.left = None
-        self.right = None
+        self.left: "Node | None" = None
+        self.right: "Node | None" = None
 
 
 class BinarySearchTree:
@@ -110,6 +110,22 @@ class BinarySearchTree:
 
         return self.min_value(node.left)
 
+    def is_valid_bst(self, node, min_val=None, max_val=None) -> bool:
+
+        if node is None:
+            return True
+
+        if max_val is not None and node.value >= max_val:
+            return False
+
+        if min_val is not None and node.value <= min_val:
+            return False
+
+        left = self.is_valid_bst(node.left, min_val, node.value)
+        right = self.is_valid_bst(node.right, node.value, max_val)
+
+        return left and right
+
 
 def run_test():
     bst = BinarySearchTree()
@@ -138,3 +154,12 @@ def run_test():
     print(bst.min_value(bst.root))
     print(bst2.min_value(bst2.root))
     print(bst3.min_value(bst3.root))
+
+    print(bst.is_valid_bst(bst.root))
+
+    invalid = BinarySearchTree()
+    invalid.root = Node(10)
+    invalid.root.left = Node(5)
+    invalid.root.right = Node(7)
+
+    print(invalid.is_valid_bst(invalid.root))
