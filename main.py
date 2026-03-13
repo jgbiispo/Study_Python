@@ -1,6 +1,6 @@
 import modules.Queue as Queue
 import modules.Stack as Stack
-from modules import BinarySearchTree
+from modules import BinarySearchTree, Graph
 
 
 def menu():
@@ -8,6 +8,8 @@ def menu():
     print("1 - Stack")
     print("2 - Queue")
     print("3 - Binary Tree")
+    print("4 - Graph")
+
     print("0 - Sair")
 
     option = input("> ")
@@ -19,6 +21,8 @@ def menu():
             Queue.run_testes()
         case "3":
             BinarySearchTree.run_test()
+        case "4":
+            Graph.run_test()
         case "0":
             print("Saindo...")
 
