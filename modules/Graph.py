@@ -34,6 +34,22 @@ class Graph:
 
         return visited
 
+    def dfs(self, start) -> list:
+        visited = []
+        stack = []
+
+        visited.append(start)
+        stack.append(start)
+
+        while stack:
+            vertex = stack.pop()
+            for neighbor in self.neighbors(vertex):
+                if neighbor not in visited:
+                    visited.append(neighbor)
+                    stack.append(neighbor)
+
+        return visited
+
     def __str__(self):
         result = ""
         for vertex, neighbors in self._adjacency.items():
@@ -51,3 +67,4 @@ def run_test():
 
     print(g)
     print(g.bfs("A"))
+    print(g.dfs("A"))
