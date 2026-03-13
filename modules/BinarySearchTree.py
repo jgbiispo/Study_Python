@@ -126,6 +126,16 @@ class BinarySearchTree:
 
         return left and right
 
+    def sum_nodes(self, node) -> int:
+
+        if node is None:
+            return 0
+
+        left = self.sum_nodes(node.left)
+        right = self.sum_nodes(node.right)
+
+        return node.value + left + right
+
 
 def run_test():
     bst = BinarySearchTree()
@@ -163,3 +173,7 @@ def run_test():
     invalid.root.right = Node(7)
 
     print(invalid.is_valid_bst(invalid.root))
+
+    print(bst.sum_nodes(bst.root))
+    print(bst2.sum_nodes(bst2.root))
+    print(bst3.sum_nodes(bst3.root))
