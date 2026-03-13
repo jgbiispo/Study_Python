@@ -80,9 +80,20 @@ class BinarySearchTree:
 
         return result
 
+    def height(self, node) -> int:
+
+        if node is None:
+            return -1
+
+        left = self.height(node.left)
+        right = self.height(node.right)
+
+        return 1 + max(left, right)
+
 
 def run_test():
     bst = BinarySearchTree()
+
     for value in [10, 5, 15, 3, 7, 20]:
         bst.insert(value)
 
@@ -91,3 +102,11 @@ def run_test():
     print(bst.inorder(bst.root))
     print(bst.preorder(bst.root))
     print(bst.postorder(bst.root))
+    print(bst.height(bst.root))
+
+    bst2 = BinarySearchTree()
+    bst2.insert(10)
+    print(bst2.height(bst2.root))
+
+    bst3 = BinarySearchTree()
+    print(bst3.height(bst3.root))
